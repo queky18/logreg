@@ -37,3 +37,49 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Express Session
+app.use(session({
+    secret : 'secret',
+    saveUninitialized : true,
+    resave : true
+}));
+
+app.use(expressValidator( {
+    errorFormatter : function(param, msg, value) {
+        var namespace = param.split('.')
+        , root = namespace.shift()
+        , formParam = root;
+
+        while(namespace.length) {
+            formParam += '[' + namespace.shift() + ']';
+        }
+        return {
+            param : formParam,
+            msg : msg,
+            value : value
+        };
+    }
+}));
+
+// Connect Flash
+app.use(flash());
+
+//Global Vars
+app.use(function (req, res, next) {
+    res.locals.success.msg = req.flash('success.msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
+
+// Map routes
+app.use('/', routes);
+app.use('/users', users);
+
+// Set port
+app.set('port', (process.env.PORT || 3000 ));
+
+app.listen(app.get('port'), function() {
+    console.log("Server started on port " + app.get('port'));
+});
