@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/queky18/logreg#readme",
   "dependencies": {
-    "bcryptjs":"*",
+    "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
     "cookie-parser": "^1.4.1",
