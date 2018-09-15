@@ -19,3 +19,9 @@ var users = require('./routes/users');
 // init app
 
 var app = express();
+
+// View engine
+app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', exphbs({defaultLayout : 'layout'}));
+app.set('view engine', 'handlebars');
+
