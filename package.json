@@ -1,0 +1,41 @@
+{
+  "name": "login_registration_app",
+  "version": "1.0.0",
+  "description": "Complete Login and Registration system for node js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/queky18/logreg.git"
+  },
+  "keywords": [
+    "auth",
+    "app",
+    "login",
+    "registration"
+  ],
+  "author": "Adrian Gheorghe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/queky18/logreg/issues"
+  },
+  "homepage": "https://github.com/queky18/logreg#readme",
+  "dependencies": {
+    "bcryptjs":"*",
+    "body-parser": "*",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.1",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-http": "*",
+    "passport-local": "*"
+  }
+}
