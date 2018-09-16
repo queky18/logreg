@@ -39,15 +39,11 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
-	bcrypt.hash(candidatePassword, 10, (err, hash) => {
-        if(err) {
-            throw err;
-        }
-        bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-            if(err) {
-                throw err;
-            }
-            callback(null, isMatch);
-        });
-    });
-}
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+		/**
+		 * Having 1 user with 2 different passwords
+		 */
+		// if(err) throw err;  -> Error: Illegal arguments: string, undefined
+    	callback(null, isMatch);
+	});
+};
