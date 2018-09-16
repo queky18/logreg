@@ -40,12 +40,12 @@ router.post('/register', function (req, res) {
 	}
 	else {
 		//checking for email and username are already taken
-		User.findOne({ username: { 
+		User.findOne({ username: {
 			"$regex": "^" + username + "\\b", "$options": "i"
-	}}, function (err, user) {
+		}}, function (err, user) {
 			User.findOne({ email: { 
 				"$regex": "^" + email + "\\b", "$options": "i"
-		}}, function (err, mail) {
+			}}, function (err, mail) {
 				if (user || mail) {
 					res.render('register', {
 						user: user,
@@ -63,7 +63,7 @@ router.post('/register', function (req, res) {
 						if (err) throw err;
 						console.log(user);
 					});
-         	req.flash('success_msg', 'You are registered and can now login');
+         			req.flash('success_msg', 'You are registered and can now login');
 					res.redirect('/users/login');
 				}
 			});
@@ -78,7 +78,7 @@ passport.use(new LocalStrategy(
 			if (!user) {
 				return done(null, false, { message: 'Unknown User' });
 			}
-
+			
 			User.comparePassword(password, user.password, function (err, isMatch) {
 				if (err) throw err;
 				if (isMatch) {
